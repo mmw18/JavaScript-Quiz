@@ -1,4 +1,4 @@
-
+// The questions that will be asked in the quiz, and what the correct answer for each question is
 var myQuestions = [
 	{
 		question: "Inside which element do you put JavaScript?",
@@ -57,6 +57,8 @@ var myQuestions = [
 	}
 
 ];
+/* Setting valued varables for timer and index, as well as declaring variables to hold each of our object values
+in the 'View High Scores' list */
 var index = 0
 var userResponse;
 var correctAnswer;
@@ -64,40 +66,57 @@ var score;
 var timer = 45;
 var timerEnable = true;
 
-
+/* Pulling the stored information in local storage out in Object form, and assigning it to 
+a variable we will use in the captureInit() and highScoresList() functions */
 var highscoresArray = JSON.parse(localStorage.getItem('highscores')) || []
 
-
+// Creating variables that will connect to elements in HTML
 var landingContainer = document.getElementById('landing');
 var questionContainer = document.getElementById('questions');
 var questionTitle = document.getElementById('prompted-question');
 var resultDisplay = document.getElementById('score-message');
 var initialPrompt = document.getElementById('initials')
 var scores = document.getElementById('scores');
+// Ensuring the timer-code will run the first time the user interacts with the page
 var isInitialized = false;
 
 
+/* Function being called when the user clicks on the 'Start Quiz' or 'Play Again' buttons, 
+that makes the timer count down by 1 second, starting at 45 seconds, during time of  being asked */
 function init() {
+	// Re-setting the intial timer value for re-play of game
 	timer = 45;
+	// Ensuring the timer code does not get re-ran when function is called again. See comment/code at the end of this function as well
 	if (isInitialized) {
 		return;
 	}
-    document.getElementById('timer-count').textContent = timer;
+    // document.getElementById('timer-count').textContent = timer;
+	// Function that will decrease timer by 1 point every second
     var intervalId = setInterval(function () {
+		// Decreasing timer value when timerEnabled var is true
 		if (timerEnable) {
         	timer--;
 		}
+		// Connecting our 'timer' variable to the HTML
         document.getElementById('timer-count').textContent = timer;
+		// Stop the timer when it reaches or goes below 0
         if (timer <= 0) {
-            clearInterval(intervalId); // Stop the timer when it reaches or goes below 0
-            timer = 0; // Ensure timer is set to 0
-            completedInitials(); // Call your function when the timer is done
+            clearInterval(intervalId); 
+			// Ensure timer is set to 0
+            timer = 0;  
+			// Calling next function when the timer is done
+            completedInitials(); 
         }
-    }, 1000); // Update the timer every 1 second (1000 milliseconds)
+		// Update the timer every 1 second (1000 milliseconds)
+    }, 1000);
+	/* Here we are setting the function to not be able to run again, since we are returning given a true 
+	value at the top of this function. This ensure's the timer will only ever be counting down one second at a time. */
 	isInitialized = true; 
 }
 
-
+/* Function that will start prompting for user to answer given questions, 
+and will also ensure the timer will restart to count down from 45 seconds when
+player chooses to 'Play Again' */
 function start() {
 	index = 0;
 	landingContainer.classList.add('hide');
@@ -109,7 +128,8 @@ function start() {
 	init();
 }
 
-
+/* Function that will display our initial prompt screen, stopping the timer,
+and displaying the user's score for them above initial input box */
 function completedInitials() {
 	questionContainer.classList.add('hide');
 	initialPrompt.classList.remove('hide');
@@ -144,7 +164,9 @@ function displayQuestions() {
     }
 }
 
-
+/* Function that moves to the next question when the user selects an answer choice, display the result
+of their last choice (correct or incorrect), and prompts for initials prompt page to be loaded once all
+questions have been asked */
 function check(event) {
     // Get the user's response from the clicked button's data-index attribute
     userResponse = parseInt(event.target.getAttribute("data-index"));
@@ -156,6 +178,9 @@ function check(event) {
     }
 }
 
+/* Function that decides if the user's selected answer choice is correct, and the message to be displayed for them
+depending on the accuracy of that choice. This function also makes 10 seconds subtract from timer each time the user's
+answer choice is wrong */
 function renderResult() {
     if (userResponse === correctAnswer) {
         resultDisplay.textContent = "Selected right answer!";
@@ -165,8 +190,12 @@ function renderResult() {
     }
 }
 
+/* Ensures that highscore values will only stick around through interaction with the 'Play Again' button, but not 
+continue to exist through page reloads */
 localStorage.clear();
 
+/* Function that created the objects that will be seen in our 'View High Scores' list - that is the user's score
+and initials per game. In this we are saving the score&initial per game to the local storage as a string */
 function captureInit() {
 	var user = document.getElementById('user-initials').value;
 	var scoreNumber = timer;
@@ -174,20 +203,20 @@ function captureInit() {
 		initial: user,
 		score: scoreNumber
 	}
-
 	highscoresArray.push(userObj)
 	localStorage.setItem('highscores', JSON.stringify(highscoresArray))
 	initialPrompt.classList.add('hide')
 	playConfirm.classList.remove('hide')
 }
 
+/* Function that will load the High Scores list when the prompted buttons are clicked, 
+displaying the information we are sending and retrieving from local storage*/
 function highscoresList() {
 	landingContainer.classList.add('hide');
 	questionContainer.classList.add('hide');
 	initialPrompt.classList.add('hide');
 	playConfirm.classList.add('hide');
 	scores.classList.remove('hide')
-
 	for (var i = 0; i < highscoresArray.length; i++) {
 		// create the li
 		var li = document.createElement('li')
@@ -198,6 +227,7 @@ function highscoresList() {
 	}
 }
 
+// Adding Event listener for 'clicks' on all interactable elements of the HTML
 document.getElementById('start-button').addEventListener('click', start);
 
 document.getElementById('submit').addEventListener('click', captureInit);

@@ -1,12 +1,17 @@
+
+/* Setting the same font-family for everything to be displayed on the page */
 * {
     font-family: 'Times New Roman', Times, serif;
 }
-
+/* Making header elements be on opposite sides on the screen, and 
+    specifying spacing from page border */
 header {
     display:flex;
     justify-content: space-between;
     margin: 0 17px;
 }
+    /* Specifying font-size for both header elements and margin of 
+        'view high scores' link */
     a {
         margin: 20px;
         font-size: 1.2rem;
@@ -15,7 +20,7 @@ header {
         font-size: 1.6rem;
     }
  
-
+/*  */
 section {
     margin: 5rem 15rem;
     display: flex;
