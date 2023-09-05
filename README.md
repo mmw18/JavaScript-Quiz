@@ -20,6 +20,6 @@ When the user initially loads the page, they will see a 'Start Quiz' button that
 
 ![Questions page](./images/Questions.jpg)
 
-![Initials prompt page](./images/Initials%20input.jpg)
+![Initials prompt page](./images/InitialsInput.png)
 
-![High scores list](./images/High%20Scores.jpg)
+![High scores list](./images/HighScores.png)
