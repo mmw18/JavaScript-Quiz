@@ -1,5 +1,4 @@
 * {
-    /* border: 2px solid black; */
     font-family: 'Times New Roman', Times, serif;
 }
 
@@ -8,11 +7,15 @@ header {
     justify-content: space-between;
     margin: 0 17px;
 }
-
-h2 {
-    font-size: 2.5rem;
-}
+    a {
+        margin: 20px;
+        font-size: 1.2rem;
+    }
+    p {
+        font-size: 1.6rem;
+    }
  
+
 section {
     margin: 5rem 15rem;
     display: flex;
@@ -22,54 +25,47 @@ section {
     text-align: center;
 } 
 
-p {
-    font-size: 1.6rem;
-}
 
-a {
-    margin: 20px;
-    font-size: 1.2rem;
-}
+    h2 {
+        font-size: 2.5rem;
+    }
+    #start-button {
+        display: flex;
+        justify-content: center;
+        margin: 7px;
+        font-size: 1.8rem;
+        background-color: pink;
+    }
+    .hide {
+        display: none;
+    }
 
-section button {
-    border-radius: 15%;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 1.5rem;
-    background-color: pink;
-    color: black;
-}
+    section div {
+        display: flex;
+        flex-direction: column;
+    }
+        #options button {
+            margin: 10px;
+            background-color: pink;
+        }
 
-/* #questions {
-    margin-top: 0 10rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-} */
+    label {
+        font-size: 2rem;
+        margin-top: .5rem;
+    }
 
+    input {
+        padding: 10px;
+        font-size: 1.5rem;
+        margin: .75rem;
+    }
 
-#start-button {
-    display: flex;
-    justify-content: space-between;
-    align-items: space-between;
-    margin: 7px;
-    font-size: 1.8rem;
-    background-color: pink;
-    color: black;
-}
-section div {
-    display: flex;
-    flex-direction: column;
-}
-
-#options button {
-    margin: 10px;
-    background-color: pink;
-}
-
-.hide {
-   display: none;
-}
+    section button {
+        border-radius: 15%;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 1.5rem;
+        background-color: pink;
+    }

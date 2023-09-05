@@ -1,125 +1,3 @@
-// // There are four different states: 1) Landing/Intro page w/ instructions for quiz
-// //      2) Question and answer page for each quiz question, 3) page asking for user 
-// //       to input initials for the high scores, 4) view high scores page
-// // We will need some mechanism to change between UI states
-// // Define our questions and answers
-// // Display the quesions and answers on the screen
-// // Specify the correct answer for each question to create score and affect time
-// // Need a way to move to the next question after answering one
-// // We need to define a timer
-// // Once timer is created, we will need a way to add or remove seconds from it
-// // When there are no more questions, the quiz ends and moves to the next screen states
-// // OR when the timer runs out the quiz will end and moves to the next screen state
-// // The user should be able to see the high scores list, organized by score, through clicking 
-// //      'view high score' link at top left of screen and after each game
-
-// var questionElement = document.getElementById("prompted-question");
-// var answersElement = [
-//     document.getElementById("answer-one"),
-//     document.getElementById("answer-two"),
-//     document.getElementById("answer-three"),
-//     document.getElementById("answer-four")
-// ];
-
-// // var pageOptions = ["landing", "questions", "initials", "scores"];
-// var displayedQuestionIndex = 0;
-
-
-// function eventAnswerIncorrect() {
-
-// }
-
-// function eventAnswerCorrect() {
-//     window.alert("hi");
-// }
-
-// function populateQuestion(index) {
-//     const currentQuestion = myQuestions[index];
-//     console.log(currentQuestion.question);
-//     questionElement.textContent = currentQuestion.question;
-
-//     // Loop through the answer keys (a, b, c, d) and populate the answer elements
-//     for (let key in currentQuestion.answers) {
-//         const answerIndex = key.charCodeAt(0) - 'a'.charCodeAt(0); // Calculate the answer index
-//         answersElement[answerIndex].textContent = currentQuestion.answers[key];
-//         if currentQuestion.answers[key] === correctAnswer.correctAnswer
-//         answersElement[answerIndex].addEventListener("click", eventAnswerCorrect);
-//     }
-// }
-
-
-// // function addAnswerEventListeners(index) {
-// //     const currentQuestion = myQuestions[index];
-// //     for (let key in currentQuestion.answers) {
-// //         const answerIndex = key.charCodeAt(0) - 'a'.charCodeAt(0); // Calculate the answer index
-// //         answersElement[answerIndex].textContent = currentQuestion.answers[key];
-// //     }
-// // }
-
-// // function populateQuestion(index) {
-// //     const currentQuestion = myQuestions[index];
-// //     questionElement.textContent = currentQuestion.question;
-
-// //     currentQuestion.answers.forEach((answer, i) => {
-// //         answersElement[i].textContent = answer;
-// //     });
-// // }
-
-// function setPage(page) {
-//     // Know what page we need to set to for change
-//     // Update HTML to load that 
-
-//     console.log(page, "page");
-//     var pages = document.getElementsByTagName("section")
-//     console.log(pages);
-//     for (let i = 0; i < pages.length; i++) {
-//         pages[i].classList.add("hide");
-//       }
-//     var pageELement = document.getElementById(page);
-//     pageELement.classList.remove("hide");
-// }
-
-// setPage(pageOptions[1]); 
-// populateQuestion(displayedQuestionIndex);
-
-// function displayQuestions() {
-// 	document.getElementById('options').innerHTML = ''
-// 	// change the content of quetionTitle
-// 	questionTitle.textContent = myQuestions[index].question
-// 	for (var i = 0; i < myQuestions[index].answers.length; i++) {
-// 		// create the element
-// 		var btn = document.createElement('button')
-// 		// add content to the element
-// 		btn.textContent = myQuestions[index].answers[i]
-
-// 		btn.addEventListener('click', check)
-// 		// append the element
-// 		document.getElementById('options').append(btn)
-// 		correctAnswer = myQuestions[index].correct
-// 		userResponse = parseInt(event.target.getAttribute("data-index"));
-// 		renderResult();
-// 	}
-
-// }
-
-// function renderResult() {
-//     if (userResponse ===  correctAnswer) {
-//         resultDisplay.textContent = "Selected right answer!";
-//     } else {
-//         resultDisplay.textContent = "You've selected the wrong answer";
-//     }
-
-// }
-
-// function check() {
-// 	console.log(this);
-// 	index++;
-
-// 	displayQuestions()
-// }
-
-// // const timerElement = document.getElementById("timer-count");
-
 
 var myQuestions = [
 	{
@@ -134,46 +12,46 @@ var myQuestions = [
 		correct: 1
 	},
 	{
-		question: "What is 30/3?",
+		question: "How do you write a single line comment in JavaScript?",
 		answers: [
-			'3',
-			'5',
-			'10',
-			'13',
-			'0'
+			'///',
+			'/*',
+			'//',
+			'#',
+			'/#'
 		],
 		correct: 2
 	},
 	{
-		question: "What is 56/7?",
+		question: "Which of the following is NOT a primitive datatype in JavaScript?",
 		answers: [
-			'8',
-			'7',
-			'9',
-			'12',
-			'3'
+			'Object',
+			'String',
+			'Boolean',
+			'Symbol',
+			'Number'
 		],
 		correct: 0
 	},
 	{
-		question: "What is 44/11?",
+		question: "How can a datatype be declared to be a constant type?",
 		answers: [
-			'14',
-			'5',
-			'4',
-			'6',
-			'9'
+			'var',
+			'let',
+			'const',
+			'let const',
+			'constant'
 		],
 		correct: 2
 	},
 	{
-		question: "What is 10/2?",
+		question: "Arrays in JavaScript are defined by which of the following statements?",
 		answers: [
-			'2',
-			'10',
-			'20',
-			'5',
-			'8'
+			'it is a ordered list of constant variables',
+			'It is an ordered list of functions',
+			'It is an ordered list of string',
+			'It is an ordered list of values',
+			'It is an ordered list of objects'
 		],
 		correct: 3
 	}
@@ -186,10 +64,10 @@ var score;
 var timer = 45;
 var timerEnable = true;
 
+
 var highscoresArray = JSON.parse(localStorage.getItem('highscores')) || []
 
 
-var startBtn = document.getElementById('start-button');
 var landingContainer = document.getElementById('landing');
 var questionContainer = document.getElementById('questions');
 var questionTitle = document.getElementById('prompted-question');
@@ -219,6 +97,7 @@ function init() {
 	isInitialized = true; 
 }
 
+
 function start() {
 	index = 0;
 	landingContainer.classList.add('hide');
@@ -230,13 +109,15 @@ function start() {
 	init();
 }
 
+
 function completedInitials() {
 	questionContainer.classList.add('hide');
 	initialPrompt.classList.remove('hide');
 	timerEnable = false;
 	var userScore = timer;
-	console.log("User Score: ", userScore);
+	document.getElementById('scoreDisplay').textContent = userScore
 }
+
 // Function that will display the questions and answer options
 function displayQuestions() {
 	// Guard against out of bounds index - jumping to initials page
@@ -293,7 +174,7 @@ function captureInit() {
 		initial: user,
 		score: scoreNumber
 	}
-	console.log(userObj);
+
 	highscoresArray.push(userObj)
 	localStorage.setItem('highscores', JSON.stringify(highscoresArray))
 	initialPrompt.classList.add('hide')
@@ -316,9 +197,8 @@ function highscoresList() {
 		document.getElementById('list').append(li)
 	}
 }
-// highscoresList()
 
-startBtn.addEventListener('click', start);
+document.getElementById('start-button').addEventListener('click', start);
 
 document.getElementById('submit').addEventListener('click', captureInit);
 
