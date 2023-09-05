@@ -57,6 +57,7 @@ var myQuestions = [
 	}
 
 ];
+
 /* Setting valued varables for timer and index, as well as declaring variables to hold each of our object values
 in the 'View High Scores' list */
 var index = 0
@@ -90,7 +91,6 @@ function init() {
 	if (isInitialized) {
 		return;
 	}
-    // document.getElementById('timer-count').textContent = timer;
 	// Function that will decrease timer by 1 point every second
     var intervalId = setInterval(function () {
 		// Decreasing timer value when timerEnabled var is true
@@ -204,6 +204,8 @@ function captureInit() {
 		score: scoreNumber
 	}
 	highscoresArray.push(userObj)
+	// Ensuring the scores list is ordered from largest to smallest, going down the list
+	highscoresArray.sort((a, b) => b.score - a.score);
 	localStorage.setItem('highscores', JSON.stringify(highscoresArray))
 	initialPrompt.classList.add('hide')
 	playConfirm.classList.remove('hide')

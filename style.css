@@ -20,7 +20,8 @@ header {
         font-size: 1.6rem;
     }
  
-/*  */
+/* Setting styling for each section (or page) being displayed - ensuring it to be
+in the middle of the screen and everything aligned in the center of the container */
 section {
     margin: 5rem 15rem;
     display: flex;
@@ -29,11 +30,12 @@ section {
     align-items: center;
     text-align: center;
 } 
-
-
+    /* Setting font size for the prompted questions and heading on high
+    scores page */
     h2 {
         font-size: 2.5rem;
     }
+    /* 'Start Quiz' button properties - size, coloring, and display */
     #start-button {
         display: flex;
         justify-content: center;
@@ -41,30 +43,34 @@ section {
         font-size: 1.8rem;
         background-color: pink;
     }
+    /* Class used to change between HTML sections (/change between pages) */
     .hide {
         display: none;
     }
-
+    /* Setting properties for the answer choices */
     section div {
         display: flex;
         flex-direction: column;
     }
+        /* Setting color and margin for each answer choice button */
         #options button {
             margin: 10px;
             background-color: pink;
         }
-
+    /* Size and top margin for the 'Enter Your Initials' prompt */
     label {
         font-size: 2rem;
         margin-top: .5rem;
     }
-
+    /* Size and display properties for input box where user can type 
+    initials after each game */
     input {
         padding: 10px;
         font-size: 1.5rem;
         margin: .75rem;
     }
-
+    /* Display properties for the 'Play Again' and 'View High Scores'
+    buttons that are displayed after user inputs initials */
     section button {
         border-radius: 15%;
         margin-bottom: 15px;
@@ -73,4 +79,8 @@ section {
         align-items: center;
         font-size: 1.5rem;
         background-color: pink;
+    }
+    /* Setting font size for the initials&scores in the high scores list */
+    #list {
+        font-size: 1.7rem;
     }
