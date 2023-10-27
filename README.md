@@ -23,3 +23,7 @@ When the user initially loads the page, they will see a 'Start Quiz' button that
 ![Initials prompt page](./images/InitialsInput.png)
 
 ![High scores list](./images/HighScores.png)
+
+## Link to Deployed Application
+
+[Click Here to take the quiz!](https://mmw18.github.io/JavaScript-Quiz/)
